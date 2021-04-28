@@ -1,1 +1,1 @@
-# functional-programming-js
+# Revisit the functional programming concepts from JS's perspective

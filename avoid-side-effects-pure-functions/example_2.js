@@ -11,3 +11,4 @@ console.log(x)
 foo3()
 
 console.log(x)
+ 

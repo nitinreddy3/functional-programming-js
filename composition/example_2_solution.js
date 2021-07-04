@@ -1,6 +1,6 @@
 const str = 'Innovation distinguishes between a leader and a follower.!!'
 
-const trimString = str => str.replace(/^\s*|\s*$/g,'');
+const trimString = str => str.replace(/^\s*|\s*$/g, '');
 
 const noPunction = str => str.replace(/[?.,!]/g, '');
 
@@ -12,15 +12,9 @@ const noArticles = str => (str !== 'A' && str !== 'AN' && str !== 'THE');
 
 const filterArticles = arr => arr.filter(noArticles);
 
-const compose = function(...fns) {
-	return function(x) {
-		return fns.reduceRight(function(v,f){
-			return f(v);
-		}, x)
-	}
-}
+const compose = (...fns) => (x) => fns.reduceRight((value, currentFunction) => currentFunction(value), x);
 
-const prepareString = compose(filterArticles, splitStr,capitalizeStr,noPunction,trimString)
+const prepareString = compose(filterArticles, splitStr, capitalizeStr, noPunction, trimString)
 
-console.log(filterArticles(splitStr(capitalizeStr(noPunction(trimString(str)))))) // option 1
-console.log(prepareString(str)) // option 1
+console.log(filterArticles(splitStr(capitalizeStr(noPunction(trimString(str)))))); // option 1
+console.log(prepareString(str)); // option 1
